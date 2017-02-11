@@ -1,0 +1,20 @@
+a {
+  text-decoration: none;
+}
+
+.landing-page {
+  display: flex;
+  justify-content: center;
+
+  .menu-item {
+    min-width: 300px;
+
+    padding: 50px 20px;
+    margin: 0 40px;
+
+    background-color: teal;
+
+    text-align: center;
+  }
+
+}

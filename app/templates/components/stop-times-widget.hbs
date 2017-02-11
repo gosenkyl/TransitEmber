@@ -1,0 +1,9 @@
+{{#if stopTimes.isFulfilled}}
+
+  {{#each stopTimes as |stopTime|}}
+    {{log stopTime}}
+  {{/each}}
+{{else}}
+
+    LOADING
+{{/if}}

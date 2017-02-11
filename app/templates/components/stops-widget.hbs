@@ -1,0 +1,17 @@
+{{routeId}}
+
+{{#if stops.isFulfilled}}
+
+  {{#each stops as |stop|}}
+
+    {{#link-to "routes.route.stop" stop.id}}
+      <div>
+        {{stop.stopName}}
+      </div>
+    {{/link-to}}
+
+  {{/each}}
+
+{{else}}
+    LOADING
+{{/if}}
