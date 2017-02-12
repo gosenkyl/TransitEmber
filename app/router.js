@@ -10,10 +10,10 @@ Router.map(function() {
   this.route('map');
   this.route('about');
   this.route('routes', function() {
-    this.route('route', { path: ':routeId' }, function(){
-      this.route('stop', { path: 'stop/:stopId' });
-    });
-
+    this.route('route', { path: ':routeId' });
+  });
+  this.route('stop-times', function(){
+    this.route('stop', { path: ':stopId' });
   });
 });
 
