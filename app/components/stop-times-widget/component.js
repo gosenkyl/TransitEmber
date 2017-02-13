@@ -11,7 +11,7 @@ export default Component.extend({
 
   routeId: null,
   stopId: null,
-  date: new Date(),
+  date: new Date(1486990607),
 
   busService: inject.service("bus"),
 
@@ -29,7 +29,7 @@ export default Component.extend({
   stopTimes: computed("routeId", "stopId", "date", function(){
     let routeId = get(this, "routeId");
     let stopId = get(this, "stopId");
-    let date = "01/01/2017";
+    let date = "2017-02-13";
 
     return get(this, "busService").getStopTimes(routeId, stopId, date);
   }),
