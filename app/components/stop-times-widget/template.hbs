@@ -1,0 +1,16 @@
+{{#if stopTimes.isFulfilled}}
+
+  {{#each filteredStopTimes as |stopTime|}}
+      <div>
+        {{stopTime.departureTime}}
+      </div>
+
+  {{else}}
+
+    {{noTimesText}}
+
+  {{/each}}
+{{else}}
+
+    LOADING
+{{/if}}
