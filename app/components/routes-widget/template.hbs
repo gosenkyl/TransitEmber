@@ -1,0 +1,18 @@
+{{#if routes.isFulfilled}}
+
+
+  {{#each routes as |route|}}
+
+    {{#link-to "busses.bus" route.id}}
+        <div>
+          {{route.routeShortName}} - {{route.routeLongName}}
+        </div>
+    {{/link-to}}
+
+  {{/each}}
+
+{{else}}
+
+    LOADING
+
+{{/if}}
