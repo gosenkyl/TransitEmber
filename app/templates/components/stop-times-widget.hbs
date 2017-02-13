@@ -1,7 +1,14 @@
 {{#if stopTimes.isFulfilled}}
 
-  {{#each stopTimes as |stopTime|}}
-    {{log stopTime}}
+  {{#each filteredStopTimes as |stopTime|}}
+    <div>
+      {{stopTime.departureTime}}
+    </div>
+
+    {{else}}
+
+      {{noTimesText}}
+
   {{/each}}
 {{else}}
 

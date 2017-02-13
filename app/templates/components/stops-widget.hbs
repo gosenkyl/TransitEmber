@@ -1,10 +1,10 @@
-{{routeId}}
+<div>Route: {{routeId}}</div>
 
 {{#if stops.isFulfilled}}
 
   {{#each stops as |stop|}}
 
-    {{#link-to "stop-times" stop.id}}
+    {{#link-to "stop-times.stop" routeId stop.id}}
       <div>
         {{stop.stopName}}
       </div>

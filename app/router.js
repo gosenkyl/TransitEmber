@@ -12,7 +12,7 @@ Router.map(function() {
   this.route('routes', function() {
     this.route('route', { path: ':routeId' });
   });
-  this.route('stop-times', function(){
+  this.route('stop-times', { path: 'routes/:routeId/stop-times' }, function(){
     this.route('stop', { path: ':stopId' });
   });
 });
