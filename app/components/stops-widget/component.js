@@ -13,7 +13,7 @@ export default Component.extend({
 
   busService: inject.service("bus"),
 
-  stops: computed("routeId", function(){
+  routeToStops: computed("routeId", function(){
     return get(this, "busService").getStops(get(this, "routeId"));
   })
 

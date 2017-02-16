@@ -1,17 +1,16 @@
 <div>Route: {{routeId}}</div>
 
-{{#if stops.isFulfilled}}
+{{#if routeToStops.isFulfilled}}
 
-  {{#each stops as |stop|}}
-
-    {{#link-to "stop-times" routeId stop.id}}
-        <div>
-          {{stop.stopName}}
-        </div>
-    {{/link-to}}
+  {{#each routeToStops as |routeToStop|}}
+      <div>
+        {{#link-to "stop-times" routeId routeToStop.id}}
+          {{routeToStop.directionId}} ~ {{routeToStop.stop.stopName}}
+        {{/link-to}}
+      </div>
 
   {{/each}}
 
 {{else}}
-    LOADING
+  {{loading-widget text="LOADING STOPS"}}
 {{/if}}

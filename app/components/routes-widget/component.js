@@ -9,6 +9,8 @@ let {
 
 export default Component.extend({
 
+  classNames: ["routes"],
+
   busService: inject.service("bus"),
 
   routes: computed(function(){
