@@ -19,7 +19,7 @@ export default Component.extend({
     return get(this, "busService").getStops(get(this, "routeId"));
   }),
 
-  sort: ["directionId:asc"],
+  sort: ["directionId:asc", "stop.stopName:asc"],
   routeToStopsSorted: computed.sort("routeToStops", "sort")
 
 });

@@ -9,6 +9,8 @@ let {
 
 export default Component.extend({
 
+  classNames: ["stopTimes list columns"],
+
   routeId: null,
   stopId: null,
   date: new Date(1486990607),
@@ -29,7 +31,7 @@ export default Component.extend({
   stopTimes: computed("routeId", "stopId", "date", function(){
     let routeId = get(this, "routeId");
     let stopId = get(this, "stopId");
-    let date = "2017-02-13";
+    let date = "2017-02-18";
 
     return get(this, "busService").getStopTimes(routeId, stopId, date);
   }),

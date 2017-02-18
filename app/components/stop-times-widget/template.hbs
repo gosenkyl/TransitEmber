@@ -1,16 +1,15 @@
-{{#if stopTimes.isFulfilled}}
 
-  {{#each filteredStopTimes as |stopTime|}}
-      <div>
-        {{stopTime.departureTime}}
-      </div>
+<div class="container">
+  {{#if stopTimes.isFulfilled}}
 
+    {{#each filteredStopTimes as |stopTime|}}
+        <div class="wrapper">
+          {{stop-time-widget stopTime=stopTime}}
+        </div>
+    {{else}}
+      {{noTimesText}}
+    {{/each}}
   {{else}}
-
-    {{noTimesText}}
-
-  {{/each}}
-{{else}}
-
-    LOADING
-{{/if}}
+    {{loading-widget text="LOADING STOPS"}}
+  {{/if}}
+</div>
