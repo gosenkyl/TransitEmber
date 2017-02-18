@@ -1,3 +1,13 @@
+.rows {
+  display: flex;
+  flex-direction: row;
+}
+
+.columns {
+  display: flex;
+  flex-direction: column;
+}
+
 a {
   color: black;
   text-decoration: none;
@@ -24,7 +34,7 @@ html, body {
     background-color: aqua;
 
     min-height: 100%;
-    width: 350px;
+    min-width: 350px;
   }
 
   .nav-content{
@@ -66,10 +76,11 @@ html, body {
 
 }
 
-.routes {
+.list {
 
   display: flex;
   justify-content: center;
+  align-items: center;
 
   .container{
     display: flex;
@@ -78,7 +89,7 @@ html, body {
     min-width: 50%;
     max-width: 50%;
 
-    .route-wrapper {
+    .wrapper {
       display: flex;
       flex-direction: row;
 
@@ -86,7 +97,7 @@ html, body {
 
       border-bottom: thin slategray solid;
 
-      .route {
+      .detail {
         text-transform: capitalize;
       }
 

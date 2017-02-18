@@ -9,7 +9,7 @@ let {
 
 export default Component.extend({
 
-  classNames: ["routes"],
+  classNames: ["routes list"],
 
   busService: inject.service("bus"),
 

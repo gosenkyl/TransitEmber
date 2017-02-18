@@ -3,7 +3,7 @@
 
     {{#each routes as |route|}}
 
-      <div class="route-wrapper">
+      <div class="wrapper">
           {{#link-to "busses.bus" route.id}}
             {{route-widget route=route}}
           {{/link-to}}

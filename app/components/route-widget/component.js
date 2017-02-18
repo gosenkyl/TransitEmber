@@ -9,7 +9,7 @@ let {
 
 export default Component.extend({
 
-  classNames: ["route"],
+  classNames: ["route detail"],
 
   route: null,
 
