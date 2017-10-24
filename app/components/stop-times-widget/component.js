@@ -1,21 +1,35 @@
 import Ember from 'ember';
+import {task} from 'ember-concurrency';
 
 let {
   Component,
   computed,
   get,
+  set,
+  isEmpty,
+  isPresent,
   inject
   } = Ember;
 
 export default Component.extend({
+  classNames: ["stop-times"],
 
-  classNames: ["stopTimes list columns"],
+  store: inject.service(),
 
   routeId: null,
   stopId: null,
-  date: new Date(1486990607),
 
-  busService: inject.service("bus"),
+  date: computed({
+    get(){
+      return new Date();
+    },
+    set(k, v){
+      return isPresent(v) ? v : null;
+    }
+  }),
+
+  isShowAll: true,
+  isHidePrevious: true,
 
   isToday: computed("date", function(){
     return get(this, "date").getDate() === new Date().getDate();
@@ -25,24 +39,29 @@ export default Component.extend({
     return get(this, "date").getDate() === new Date().getDate() ? "No Times Remaining Today" : "No Times Exist For " + get(this, "date").getDate();
   }),
 
-  isShowAll: true,
-  isHidePrevious: true,
+  stopTimes: null,
 
-  stopTimes: computed("routeId", "stopId", "date", function(){
+  getStopTimes: task(function * (){
     let routeId = get(this, "routeId");
     let stopId = get(this, "stopId");
-    let date = "2017-02-18";
+    let date = "2017-10-23";
 
-    return get(this, "busService").getStopTimes(routeId, stopId, date);
-  }),
+    let stopTimes = yield get(this, "store").query("stop-time", {routeId: routeId, stopId: stopId, date: date});
+    set(this, "stopTimes", stopTimes);
+
+    return stopTimes;
+  }).on("init"),
 
   filteredStopTimes: computed("isShowAll", "isHidePrevious", "isToday", "stopTimes.[]", function(){
+    let stopTimes = get(this, "stopTimes");
+
+    if(isEmpty(stopTimes)){
+      return Ember.A();
+    }
 
     let isShowAll = get(this, "isShowAll");
     let isHidePrevious = get(this, "isHidePrevious");
     let isToday = get(this, "isToday");
-
-    let stopTimes = get(this, "stopTimes");
 
     if(isToday === false || isHidePrevious === false){
       return stopTimes;

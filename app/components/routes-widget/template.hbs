@@ -1,17 +1,11 @@
-<div class="container">
-  {{#if routes.isFulfilled}}
-
-    {{#each routes as |route|}}
-
-      <div class="wrapper">
-          {{#link-to "busses.bus" route.id}}
-            {{route-widget route=route}}
-          {{/link-to}}
-      </div>
-
-    {{/each}}
-
+{{#if getRoutes.isRunning}}
+  {{loading-widget text="LOADING ROUTES"}}
+{{else}}
+  {{#each routes as |route|}}
+    {{#link-to "stops" route.id}}
+      {{route-widget route=route}}
+    {{/link-to}}
   {{else}}
-    {{loading-widget text="LOADING ROUTES"}}
-  {{/if}}
-</div>
+    NO ROUTES
+  {{/each}}
+{{/if}}

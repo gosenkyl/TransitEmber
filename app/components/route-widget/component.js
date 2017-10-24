@@ -4,12 +4,14 @@ let {
   Component,
   computed,
   get,
-  isPresent
+  isPresent,
+  inject
   } = Ember;
 
 export default Component.extend({
+  classNames: ["route"],
 
-  classNames: ["route detail"],
+  router: inject.service(),
 
   route: null,
 
@@ -18,10 +20,16 @@ export default Component.extend({
     let longName = get(this, "route.routeLongName");
 
     if(isPresent(longName)){
-      shortName += " - ";
+      shortName += " | ";
     }
 
     return shortName + longName;
-  })
+  }),
+
+  actions: {
+    onSelectRoute(){
+      get(this, "router").transitionTo("stops", get(this, "route.id"));
+    }
+  }
 
 });

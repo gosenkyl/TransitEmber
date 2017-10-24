@@ -3,20 +3,34 @@ import Ember from 'ember';
 let {
   Component,
   computed,
-  get
+  get,
+  isPresent,
+  inject
 } = Ember;
 
 export default Component.extend({
+  classNames: ["stop"],
 
-  classNames: ["stop detail"],
+  router: inject.service(),
 
+  routeId: null,
   stop: null,
   directionId: null,
 
   stopName: computed.reads("stop.stopName"),
 
-  text: computed("stop", function(){
-    return get(this, "directionId") + " ~ " + get(this, "stopName")
-  })
+  stopDescription: computed("directionId", "stopName", function(){
+    let directionId = "";
+    if(isPresent(get(this, "directionId"))){
+      directionId += `${get(this, "directionId")} ~ `;
+    }
+    return directionId + get(this, "stopName");
+  }),
+
+  actions: {
+    onSelectStop(){
+      get(this, "router").transitionTo("stop-times", get(this, "routeId"), get(this, "stop.id"));
+    }
+  }
 
 });

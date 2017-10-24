@@ -1,20 +1,25 @@
 import Ember from 'ember';
+import {task} from 'ember-concurrency';
 
-let {
+const {
   Component,
-  computed,
   inject,
-  get
+  get,
+  set
   } = Ember;
 
 export default Component.extend({
 
-  classNames: ["routes list"],
+  classNames: ["routes"],
 
-  busService: inject.service("bus"),
+  store: inject.service(),
 
-  routes: computed(function(){
-    return get(this, "busService").getRoutes();
-  })
+  routes: null,
+
+  getRoutes: task(function * (){
+    let routes = yield get(this, "store").findAll("route");
+    set(this, "routes", routes);
+    return routes;
+  }).on('init')
 
 });

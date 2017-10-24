@@ -23,10 +23,10 @@ export default Component.extend({
 
     let hours = parseInt(timeParts[0]);
     let minutes = parseInt(timeParts[1]);
-    let ampm = "AM";
+    let ampm = "am";
 
     if(hours >= 12 && hours < 24){
-      ampm = "PM";
+      ampm = "pm";
 
       if(hours > 12) {
         hours -= 12;
@@ -54,7 +54,7 @@ export default Component.extend({
       minutes = "0" + minutes;
     }
 
-    return hours + ":" + minutes + ampm;
+    return hours + ":" + minutes + " " + ampm;
   })
 
 });
