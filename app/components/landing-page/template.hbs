@@ -1,11 +1,3 @@
-<div class="menu-item">
-  {{#link-to "routes"}}Stop Times{{/link-to}}
-</div>
-
-<div class="menu-item">
-  {{#link-to "map"}}Map{{/link-to}}
-</div>
-
-<div class="menu-item">
-  {{#link-to "about"}}About{{/link-to}}
-</div>
+{{#link-to "routes" (query-params map=false)}}Stop Times{{/link-to}}
+{{#link-to "routes" (query-params map=true)}}Map{{/link-to}}
+{{#link-to "about"}}About{{/link-to}}

@@ -15,6 +15,8 @@ export default Component.extend({
 
   store: inject.service(),
 
+  isMap: false,
+
   routeId: null,
   route: null,
 

@@ -7,15 +7,13 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-
   this.route('routes');
   this.route('stops', {path: '/routes/:routeId/stops'});
-  this.route('stop-times', { path: 'routes/:routeId/stops/:stopId/stop-times'});
-
-  this.route('map');
+  this.route('stop-times', {path: 'routes/:routeId/stops/:stopId/stop-times'});
 
   this.route('about');
 
+  this.route('map', {path: 'routes/:routeId/stops/:stopId/map'});
 });
 
 export default Router;

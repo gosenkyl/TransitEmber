@@ -9,10 +9,11 @@ const {
   } = Ember;
 
 export default Component.extend({
-
   classNames: ["routes"],
 
   store: inject.service(),
+
+  isMap: false,
 
   routes: null,
 

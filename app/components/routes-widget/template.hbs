@@ -2,9 +2,7 @@
   {{loading-widget text="LOADING ROUTES"}}
 {{else}}
   {{#each routes as |route|}}
-    {{#link-to "stops" route.id}}
-      {{route-widget route=route}}
-    {{/link-to}}
+      {{route-widget route=route isMap=isMap}}
   {{else}}
     NO ROUTES
   {{/each}}

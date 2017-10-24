@@ -13,6 +13,8 @@ export default Component.extend({
 
   router: inject.service(),
 
+  isMap: false,
+
   route: null,
 
   routeDescription: computed("route", function(){
@@ -28,7 +30,7 @@ export default Component.extend({
 
   actions: {
     onSelectRoute(){
-      get(this, "router").transitionTo("stops", get(this, "route.id"));
+      get(this, "router").transitionTo("stops", get(this, "route.id"), {queryParams: {map: get(this, "isMap")}});
     }
   }
 
