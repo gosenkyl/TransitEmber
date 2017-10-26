@@ -1,0 +1,74 @@
+{{route-widget route=route}}
+
+<div class="container">
+    <div class="map-content">
+      {{#if loadData.isRunning}}
+        {{loading-widget class="g-map-canvas"}}
+      {{else}}
+        {{#g-map markersFitMode='live' as |context|}}
+            {{#each routeToStops as |routeToStop|}}
+              {{#g-map-marker
+                context
+                lat=routeToStop.stop.stopLat
+                lng=routeToStop.stop.stopLon
+                icon="/assets/images/marker-blue.png"
+                onClick=(action "onSelectMarker" routeToStop)
+                as |markerContext|
+              }}
+                {{g-map-infowindow markerContext title=routeToStop.stop.stopName}}
+              {{/g-map-marker}}
+            {{/each}}
+
+            {{#if currentLocation}}
+              {{g-map-marker
+                context
+                lat=currentLocation.latitude
+                lng=currentLocation.longitude
+                icon="/assets/images/marker-red.png"}}
+            {{/if}}
+        {{/g-map}}
+      {{/if}}
+    </div>
+
+    <div class="stop-info">
+      {{#if selectedRouteToStop}}
+
+        {{street-view lat=selectedRouteToStop.stop.stopLat lng=selectedRouteToStop.stop.stopLon pov=pov}}
+
+        <div class="times">
+          {{#if getStopTimes.isRunning}}
+            {{loading-widget}}
+          {{else}}
+            {{#each stopTimes as |stopTime|}}
+              <div class="time">
+                {{stopTime.departureTime}}
+              </div>
+            {{else}}
+              <div>NO STOP TIME LEFT YO</div>
+            {{/each}}
+          {{/if}}
+        </div>
+
+        <div class="back-button" {{action "onBack"}}>BACK</div>
+      {{else}}
+
+        <div class="stops">
+          {{#each routeToStops as |routeToStop|}}
+            <div class="stop" {{action "onSelectStop" routeToStop}}>
+              {{routeToStop.stop.stopName}} - {{routeToStop.directionId}} - {{routeToStop.stopSequence}}
+              {{#if currentLocation}}
+                -
+                {{calculate-distance aLat=currentLocation.latitude aLng=currentLocation.longitude bLat=routeToStop.stop.stopLat bLng=routeToStop.stop.stopLon}}
+              {{/if}}
+            </div>
+          {{/each}}
+        </div>
+
+      {{/if}}
+
+    </div>
+</div>
+
+{{#if selectedRouteToStop}}
+  <div class="selected-stop-name">{{selectedRouteToStop.stop.stopName}}</div>
+{{/if}}

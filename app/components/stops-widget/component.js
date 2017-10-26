@@ -10,12 +10,9 @@ let {
   } = Ember;
 
 export default Component.extend({
-
-  classNames: ["stops list columns"],
+  classNames: ["stops"],
 
   store: inject.service(),
-
-  isMap: false,
 
   routeId: null,
   route: null,

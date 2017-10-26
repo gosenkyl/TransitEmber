@@ -1,6 +1,6 @@
 {{#power-datepicker selected=date onSelect=(action (mut date) value="date") as |dp|}}
   {{#dp.trigger tabindex="-1"}}
-      <input type="text" class="form-control" readonly value={{moment-format selected 'MM-DD-YYYY'}}>
+      <input type="text" class="form-control" readonly value={{moment-format date 'MM-DD-YYYY'}}>
   {{/dp.trigger}}
 
   {{#dp.content class="dropdown-menu demo-datepicker-small"}}
@@ -12,7 +12,7 @@
 {{#if getStopTimes.isRunning}}
   {{loading-widget text="LOADING STOP TIMES"}}
 {{else}}
-  {{#each filteredStopTimes as |stopTime|}}
+  {{#each stopTimes as |stopTime|}}
     {{stop-time-widget stopTime=stopTime}}
   {{else}}
     {{noTimesText}}

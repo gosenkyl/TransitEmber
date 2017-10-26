@@ -1,4 +1,61 @@
 @import "ember-power-datepicker";
+
+.map {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .route {
+    padding-bottom: 50px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: row;
+
+    .map-content{
+      width: 600px;
+      height: 400px;
+
+      .g-map-canvas {
+        width: 600px;
+        height: 400px;
+      }
+    }
+
+    .stop-info {
+      display: flex;
+      flex-direction: column;
+
+      padding-left: 20px;
+
+      .street-view-container {
+        width: 400px;
+        height: 200px;
+      }
+
+      .stops {
+        height: 400px;
+
+        overflow-y: auto;
+      }
+
+      .times {
+        height: 175px;
+        overflow-y: auto;
+      }
+
+      .back-button {
+        height: 25px;
+      }
+    }
+  }
+
+  .selected-stop-name {
+    padding-top: 20px;
+  }
+}
+
 /*
 
 .rows {

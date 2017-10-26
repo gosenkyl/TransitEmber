@@ -23,6 +23,22 @@ module.exports = function(environment) {
     }
   };
 
+  ENV['g-map'] = {
+    key: 'AIzaSyCSiHOUw0kIX31a007XrQEmglZXQZDJyTY'
+  };
+
+  ENV['streetView'] = {
+    include: false
+  };
+
+  ENV['contentSecurityPolicy'] = {
+    'default-src': "'none'",
+    'script-src': "'self' 'unsafe-eval' *.googleapis.com",
+    'font-src': "'self' fonts.gstatic.com",
+    'img-src': "'self' *.googleapis.com maps.gstatic.com *.gstatic.com",
+    'style-src': "'self' 'unsafe-inline' *.googleapis.com"
+  };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;

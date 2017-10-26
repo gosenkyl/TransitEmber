@@ -13,7 +13,7 @@ Router.map(function() {
 
   this.route('about');
 
-  this.route('map', {path: 'routes/:routeId/stops/:stopId/map'});
+  this.route('map', {path: 'routes/:routeId/map'});
 });
 
 export default Router;

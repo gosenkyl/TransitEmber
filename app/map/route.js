@@ -1,4 +1,11 @@
 import Ember from 'ember';
 
-export default Ember.Route.extend({
+const {Route, get} = Ember;
+
+export default Route.extend({
+
+  model(params){
+    return get(this, "store").findRecord("route", params.routeId);
+  }
+
 });

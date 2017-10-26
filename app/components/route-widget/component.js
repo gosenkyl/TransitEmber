@@ -30,7 +30,13 @@ export default Component.extend({
 
   actions: {
     onSelectRoute(){
-      get(this, "router").transitionTo("stops", get(this, "route.id"), {queryParams: {map: get(this, "isMap")}});
+      let isMap = get(this, "isMap");
+
+      if(isMap == "true"){
+        get(this, "router").transitionTo("map", get(this, "route.id"));
+      } else {
+        get(this, "router").transitionTo("stops", get(this, "route.id"));
+      }
     }
   }
 

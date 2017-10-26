@@ -13,8 +13,6 @@ export default Component.extend({
 
   router: inject.service(),
 
-  isMap: false,
-
   routeId: null,
   stop: null,
   directionId: null,
@@ -31,13 +29,7 @@ export default Component.extend({
 
   actions: {
     onSelectStop(){
-      let isMap = get(this, "isMap");
-
-      if(isMap == "true"){
-        get(this, "router").transitionTo("map", get(this, "routeId"), get(this, "stop.id"));
-      } else {
-        get(this, "router").transitionTo("stop-times", get(this, "routeId"), get(this, "stop.id"));
-      }
+      get(this, "router").transitionTo("stop-times", get(this, "routeId"), get(this, "stop.id"));
     }
   }
 
